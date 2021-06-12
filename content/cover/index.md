@@ -13,7 +13,7 @@ blocks:
       that up to whatever structured format you like!
 
 
-      You're looking at the main landing page, it's a markdown file which you
+      You're looking at the main cover page, it's a markdown file which you
       can find at "content/cover/index.md".
 
 
@@ -25,5 +25,5 @@ blocks:
 
       We've built a few pages for you to get started, take a look around and see
       if you can figure out how to build your own pages and templates.
-_template: landingPage
+_template: coverPage
 ---

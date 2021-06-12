@@ -56,7 +56,7 @@ export default defineSchema({
       templates: [
         {
           label: "Cover Page",
-          name: "CoverPage",
+          name: "coverPage",
           fields: [
             {
               type: "blocks",

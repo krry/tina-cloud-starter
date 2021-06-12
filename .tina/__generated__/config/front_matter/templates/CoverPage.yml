@@ -1,6 +1,6 @@
 ---
 label: Cover Page
-name: CoverPage
+name: coverPage
 fields:
   - name: blocks
     label: Blocks

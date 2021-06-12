@@ -1,9 +1,9 @@
 import React from "react";
 import Markdown from "react-markdown";
 import Image from "next/image";
-import type { LandingPage_Doc_Data } from "../.tina/__generated__/types";
+import type { CoverPage_Doc_Data } from "../.tina/__generated__/types";
 
-export const LandingPage = (props: LandingPage_Doc_Data) => {
+export const CoverPage = (props: CoverPage_Doc_Data) => {
   return (
     <>
       {props.blocks

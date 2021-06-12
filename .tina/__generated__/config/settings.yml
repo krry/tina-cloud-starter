@@ -22,7 +22,7 @@ sections:
     name: cover
     path: content/cover
     templates:
-      - CoverPage
+      - coverPage
     type: directory
     create: documents
     match: '**/*.md'
