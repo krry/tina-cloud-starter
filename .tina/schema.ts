@@ -50,13 +50,13 @@ export default defineSchema({
       ],
     },
     {
-      label: "Marketing Pages",
-      name: "marketingPages",
-      path: "content/marketing-pages",
+      label: "Cover",
+      name: "cover",
+      path: "content/cover",
       templates: [
         {
-          label: "Landing Page",
-          name: "landingPage",
+          label: "Cover Page",
+          name: "CoverPage",
           fields: [
             {
               type: "blocks",

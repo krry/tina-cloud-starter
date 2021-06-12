@@ -1,6 +1,6 @@
 ---
-label: Landing Page
-name: landingPage
+label: Cover Page
+name: CoverPage
 fields:
   - name: blocks
     label: Blocks

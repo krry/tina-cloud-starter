@@ -16,12 +16,10 @@ Watch our video guide to get started in less than 10 minutes.
 
 Tina doesn't impact your website performance. This starter comes with default perfect [Lighthouse scores](https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Ftina-cloud-starter-orcin.vercel.app%2F) 🚀
 
-
-
 ## Table of contents
 
 - ❓ [What is this?](#what-is-this)
-- 🍴 [Fork and Clone](#fork-this-repository)   
+- 🍴 [Fork and Clone](#fork-this-repository)
 - ⬇️ [Install](#install)
 - 🌎 [Run the project locally](#run-the-project-locally)
 - 📝 [Edit content locally](#edit-content-locally)
@@ -56,7 +54,7 @@ This is a [TinaCMS](https://tina.io)-enabled Next.js app, so you can edit your c
 
 ## Fork this repository
 
- ⚠️⚠️ Start by **forking** the repository and then pull it down to your computer. ⚠️⚠️
+⚠️⚠️ Start by **forking** the repository and then pull it down to your computer. ⚠️⚠️
 
 ## Install
 
@@ -64,7 +62,7 @@ This is a [TinaCMS](https://tina.io)-enabled Next.js app, so you can edit your c
 
 Install the project's dependencies:
 
-```
+```shell
 yarn install
 ```
 
@@ -74,7 +72,7 @@ yarn install
 
 To run the local development server:
 
-```
+```shell
 yarn dev
 ```
 
@@ -91,6 +89,7 @@ Open [`http://localhost:3000`](http://localhost:3000) in your browser to see you
 We need to define some local environment variables in order to edit content with Tina.
 
 Copy `.env.local.sample` to `.env.local`:
+
 ```sh
 cp .env.local.sample .env.local
 
@@ -129,17 +128,17 @@ In the `env.local` file set:
 - `NEXT_PUBLIC_USE_LOCAL_CLIENT` to `0`.
 - `NEXT_PUBLIC_ORGANIZATION_NAME` to your Tina Cloud organization name
 - `NEXT_PUBLIC_TINA_CLIENT_ID` to the Client ID displayed in your Tina Cloud App.
-- `NEXT_PUBLIC_SHOW_EDIT_BTN` to `0` or `1`, `0` means there is no "enter edit mode" and you will have to visit [`/admin`](http://localhost/admin)  to enter edit mode.
+- `NEXT_PUBLIC_SHOW_EDIT_BTN` to `0` or `1`, `0` means there is no "enter edit mode" and you will have to visit [`/admin`](http://localhost/admin) to enter edit mode.
 
 Restart your server and run `yarn dev` again.
 
 Open [`http://localhost:3000/`](http://localhost:3000/`) and click "enter edit mode"
 
-![](public/uploads/tina-cloud-authorization.png)
+![Tina Cloud Authorization](public/uploads/tina-cloud-authorization.png)
 
 This time a modal asks you to authenticate through Tina Cloud. Upon success, your edits will be sent to the cloud server (and subsequently to GitHub).
 
-#### Edit content
+### Edit content
 
 Make some edits through the sidebar and click save.
 Changes are saved in your GitHub repository.
@@ -156,12 +155,12 @@ Now that Tina Cloud editing is working correctly, we can deploy the site so that
 
 Connect to your GitHub repository and set the same environment variables as the ones in your `env.local` file:
 
-```
+```env
 NEXT_PUBLIC_ORGANIZATION_NAME= <YOUR_ORGANIZATION>
 NEXT_PUBLIC_TINA_CLIENT_ID= <YOUR_CLIENT_ID>
 ```
 
-![](public/uploads/vercel-congratulations.png)
+![Vercel Congrats](public/uploads/vercel-congratulations.png)
 
 🎉 Congratulations, your site is now live!
 
@@ -177,16 +176,16 @@ Connect to your GitHub repository, then:
 - set the **build command** to `yarn build`,
 - set the **publish directory**. To `.next/` .
 
-![](public/uploads/netlify-build-settings.png)
+![Netlify Build Settings](public/uploads/netlify-build-settings.png)
 
 Click on **advanced** to add the same environment variables as the ones in your `env.local` file:
 
-```
+```env
 NEXT_PUBLIC_ORGANIZATION_NAME= <YOUR_ORGANIZATION>
 NEXT_PUBLIC_TINA_CLIENT_ID= <YOUR_CLIENT_ID>
 ```
 
-![](public/uploads/netlify-advanced-build-settings.png)
+![Netlify Adv Build Settings](public/uploads/netlify-advanced-build-settings.png)
 
 Copy-paste your Organization ID and Client ID.
 
@@ -208,16 +207,15 @@ Tina Cloud Starter is a [Next.js](https://nextjs.org) application. The file-base
 
 ### `pages/index.tsx`
 
-This page can be seen at `http://localhost:3000/`, it loads the content from a markdown file which can be found in this repository at `/content/marketing-pages/index.md`. You can edit this page at by clicking the "enter edit mode" button in the top right hand corner
+This page can be seen at `http://localhost:3000/`, it loads the content from a markdown file which can be found in this repository at `/content/cover/index.md`. You can edit this page at by clicking the "enter edit mode" button in the top right hand corner
 
-
-We wrap the site in a small `EditProvider` component, that stores whether or not we are in edit mode in React state and localstorage. When we are in edit mode it triggers authentication when needed, and then one is in edit mode. 
+We wrap the site in a small `EditProvider` component, that stores whether or not we are in edit mode in React state and localstorage. When we are in edit mode it triggers authentication when needed, and then one is in edit mode.
 
 What makes this possible is `getStaticProps`: you can notice that every editable page exports a `query` prop and a data prop from `getStaticProps`. When we are not in `editMode` we use the data prop to render the site. When we are in edit mode we use the query to fetch the latest data from Tina Cloud and create the sidebar form.
 
 ### `pages/posts/[filename].tsx`
 
-The posts are stored in the `content/posts` directory of this repository, and their routes are built with `getStaticPaths` dynamically at build time. To go in edit mode, click the "edit this site" button. This  re-renders your site  by wrapping it when a `TinaProvider` component, this only happens in edit mode to make sure Tina is not added to your production bundle.
+The posts are stored in the `content/posts` directory of this repository, and their routes are built with `getStaticPaths` dynamically at build time. To go in edit mode, click the "edit this site" button. This re-renders your site by wrapping it when a `TinaProvider` component, this only happens in edit mode to make sure Tina is not added to your production bundle.
 
 ### `components`
 
@@ -301,13 +299,13 @@ If you have a GraphQL client like [Altair](https://altair.sirmuel.design/) go to
 
 Tina Cloud is in public alpha, you might face issues, to provide feedback or get help with any challenges you may have:
 
--   Read the [Tina Cloud documentation](https://tina.io/docs/tina-cloud/).
--   [Join our Discord](https://discord.gg/zumN63Ybpf).
--   Visit the [community forum](https://community.tinacms.org/) to ask questions.
--   Reach out to us on Twitter at [@tina_cms](https://twitter.com/tina_cms).
--   [Email us](mailto:support@tina.io) to schedule a call with our team and share more about your context and what you're trying to achieve.
--   Get support through the chat widget on the Tina Cloud Dashboard
+- Read the [Tina Cloud documentation](https://tina.io/docs/tina-cloud/).
+- [Join our Discord](https://discord.gg/zumN63Ybpf).
+- Visit the [community forum](https://community.tinacms.org/) to ask questions.
+- Reach out to us on Twitter at [@tina_cms](https://twitter.com/tina_cms).
+- [Email us](mailto:support@tina.io) to schedule a call with our team and share more about your context and what you're trying to achieve.
+- Get support through the chat widget on the Tina Cloud Dashboard
 
 ## LICENSE
 
-Licensed under the [Aoache 2.0 license](./LICENSE).
+Licensed under the [Apache 2.0 license](./LICENSE).

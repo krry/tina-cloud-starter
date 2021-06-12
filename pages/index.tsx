@@ -1,6 +1,6 @@
 import { LandingPage } from "../components/landing-page";
 import { Wrapper } from "../components/helper-components";
-import type { MarketingPages_Document } from "../.tina/__generated__/types";
+import type { Cover_Document } from "../.tina/__generated__/types";
 import { createLocalClient, AsyncReturnType } from "../utils";
 
 export default function HomePage(
@@ -8,8 +8,8 @@ export default function HomePage(
 ) {
   return (
     <>
-      <Wrapper data={props.data.getMarketingPagesDocument.data}>
-        <LandingPage {...props.data.getMarketingPagesDocument.data} />
+      <Wrapper data={props.data.coverDocument.data}>
+        <LandingPage {...props.data.coverDocument.data} />
       </Wrapper>
     </>
   );
@@ -18,8 +18,8 @@ export default function HomePage(
 export const query = `#graphql
   query ContentQuery {
     # "index.md" is _relative_ to the "Marketing Pages" path property in your schema definition
-    # you can inspect this file at "content/marketing-pages/index.md"
-    getMarketingPagesDocument(relativePath: "index.md") {
+    # you can inspect this file at "content/cover/index.md"
+    coverDocument(relativePath: "index.md") {
       data {
         __typename
         ... on LandingPage_Doc_Data {
@@ -46,7 +46,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       data: await client.request<{
-        getMarketingPagesDocument: MarketingPages_Document;
+        coverDocument: Cover_Document;
       }>(query, {
         variables: {},
       }),

@@ -18,11 +18,11 @@ sections:
     create: documents
     match: '**/*.md'
     new_doc_ext: md
-  - label: Marketing Pages
-    name: marketingPages
-    path: content/marketing-pages
+  - label: Cover
+    name: cover
+    path: content/cover
     templates:
-      - landingPage
+      - CoverPage
     type: directory
     create: documents
     match: '**/*.md'

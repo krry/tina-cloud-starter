@@ -64,12 +64,12 @@ export type Section = {
   documents?: Maybe<Array<Maybe<Document>>>;
 };
 
-export type SectionDocumentUnion = Posts_Document | Authors_Document | MarketingPages_Document;
+export type SectionDocumentUnion = Posts_Document | Authors_Document | Cover_Document;
 
 export type SectionParams = {
   posts?: Maybe<Posts_Input>;
   authors?: Maybe<Authors_Input>;
-  marketingPages?: Maybe<MarketingPages_Input>;
+  cover?: Maybe<Cover_Input>;
 };
 
 export type Mutation = {
@@ -78,7 +78,7 @@ export type Mutation = {
   updateDocument?: Maybe<SectionDocumentUnion>;
   updatePostsDocument?: Maybe<Posts_Document>;
   updateAuthorsDocument?: Maybe<Authors_Document>;
-  updateMarketingPagesDocument?: Maybe<MarketingPages_Document>;
+  updateCoverDocument?: Maybe<Cover_Document>;
 };
 
 
@@ -107,9 +107,9 @@ export type MutationUpdateAuthorsDocumentArgs = {
 };
 
 
-export type MutationUpdateMarketingPagesDocumentArgs = {
+export type MutationUpdateCoverDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
-  params?: Maybe<MarketingPages_Input>;
+  params?: Maybe<Cover_Input>;
 };
 
 export type Query = {
@@ -122,8 +122,8 @@ export type Query = {
   getPostsList?: Maybe<Array<Maybe<Posts_Document>>>;
   getAuthorsDocument?: Maybe<Authors_Document>;
   getAuthorsList?: Maybe<Array<Maybe<Authors_Document>>>;
-  getMarketingPagesDocument?: Maybe<MarketingPages_Document>;
-  getMarketingPagesList?: Maybe<Array<Maybe<MarketingPages_Document>>>;
+  getCoverDocument?: Maybe<Cover_Document>;
+  getCoverList?: Maybe<Array<Maybe<Cover_Document>>>;
 };
 
 
@@ -153,7 +153,7 @@ export type QueryGetAuthorsDocumentArgs = {
 };
 
 
-export type QueryGetMarketingPagesDocumentArgs = {
+export type QueryGetCoverDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
 };
 
@@ -277,23 +277,23 @@ export type Author_Doc_Input = {
   _body?: Maybe<Scalars['String']>;
 };
 
-export type MarketingPages_Data = LandingPage_Doc_Data;
+export type Cover_Data = CoverPage_Doc_Data;
 
-export type MarketingPages_Input = {
-  landingPage?: Maybe<LandingPage_Doc_Input>;
+export type Cover_Input = {
+  coverPage?: Maybe<CoverPage_Doc_Input>;
 };
 
-export type MarketingPages_Values = LandingPage_Doc_Values;
+export type Cover_Values = CoverPage_Doc_Values;
 
-export type MarketingPages_Form = LandingPage_Doc_Form;
+export type Cover_Form = CoverPage_Doc_Form;
 
-export type MarketingPages_Document = Node & Document & {
-  __typename?: 'MarketingPages_Document';
+export type Cover_Document = Node & Document & {
+  __typename?: 'Cover_Document';
   id: Scalars['ID'];
   sys?: Maybe<SystemInfo>;
-  data?: Maybe<MarketingPages_Data>;
-  values?: Maybe<MarketingPages_Values>;
-  form?: Maybe<MarketingPages_Form>;
+  data?: Maybe<Cover_Data>;
+  values?: Maybe<Cover_Values>;
+  form?: Maybe<Cover_Form>;
 };
 
 export type Message_Data = {
@@ -309,11 +309,11 @@ export type Image_Data = {
   src?: Maybe<Scalars['String']>;
 };
 
-export type LandingPage_Blocks_Data = Message_Data | Image_Data;
+export type CoverPage_Blocks_Data = Message_Data | Image_Data;
 
-export type LandingPage_Doc_Data = {
-  __typename?: 'LandingPage_Doc_Data';
-  blocks?: Maybe<Array<Maybe<LandingPage_Blocks_Data>>>;
+export type CoverPage_Doc_Data = {
+  __typename?: 'CoverPage_Doc_Data';
+  blocks?: Maybe<Array<Maybe<CoverPage_Blocks_Data>>>;
   _body?: Maybe<Scalars['String']>;
 };
 
@@ -332,11 +332,11 @@ export type Image_Values = {
   _template?: Maybe<Scalars['String']>;
 };
 
-export type LandingPage_Blocks_Values = Message_Values | Image_Values;
+export type CoverPage_Blocks_Values = Message_Values | Image_Values;
 
-export type LandingPage_Doc_Values = {
-  __typename?: 'LandingPage_Doc_Values';
-  blocks?: Maybe<Array<Maybe<LandingPage_Blocks_Values>>>;
+export type CoverPage_Doc_Values = {
+  __typename?: 'CoverPage_Doc_Values';
+  blocks?: Maybe<Array<Maybe<CoverPage_Blocks_Values>>>;
   _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
@@ -359,27 +359,27 @@ export type Image_Form = {
   fields?: Maybe<Array<Maybe<Image_FormFieldsUnion>>>;
 };
 
-export type LandingPage_Blocks_BlocksFieldTemplates = {
-  __typename?: 'LandingPage_Blocks_BlocksFieldTemplates';
+export type CoverPage_Blocks_BlocksFieldTemplates = {
+  __typename?: 'CoverPage_Blocks_BlocksFieldTemplates';
   message?: Maybe<Message_Form>;
   image?: Maybe<Image_Form>;
 };
 
-export type LandingPage_Blocks_BlocksField = FormField & {
-  __typename?: 'LandingPage_Blocks_BlocksField';
+export type CoverPage_Blocks_BlocksField = FormField & {
+  __typename?: 'CoverPage_Blocks_BlocksField';
   name?: Maybe<Scalars['String']>;
   label?: Maybe<Scalars['String']>;
   component?: Maybe<Scalars['String']>;
-  templates?: Maybe<LandingPage_Blocks_BlocksFieldTemplates>;
+  templates?: Maybe<CoverPage_Blocks_BlocksFieldTemplates>;
 };
 
-export type LandingPage_Doc_FormFieldsUnion = LandingPage_Blocks_BlocksField | TextareaField;
+export type CoverPage_Doc_FormFieldsUnion = CoverPage_Blocks_BlocksField | TextareaField;
 
-export type LandingPage_Doc_Form = {
-  __typename?: 'LandingPage_Doc_Form';
+export type CoverPage_Doc_Form = {
+  __typename?: 'CoverPage_Doc_Form';
   label?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
-  fields?: Maybe<Array<Maybe<LandingPage_Doc_FormFieldsUnion>>>;
+  fields?: Maybe<Array<Maybe<CoverPage_Doc_FormFieldsUnion>>>;
 };
 
 export type Message_Input = {
@@ -398,7 +398,7 @@ export type Blocks_Input = {
   image?: Maybe<Image_Input>;
 };
 
-export type LandingPage_Doc_Input = {
+export type CoverPage_Doc_Input = {
   blocks?: Maybe<Array<Maybe<Blocks_Input>>>;
   _body?: Maybe<Scalars['String']>;
 };

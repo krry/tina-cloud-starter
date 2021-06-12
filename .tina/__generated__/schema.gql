@@ -46,12 +46,12 @@ type Section {
   documents: [Document]
 }
 
-union SectionDocumentUnion = Posts_Document | Authors_Document | MarketingPages_Document
+union SectionDocumentUnion = Posts_Document | Authors_Document | Cover_Document
 
 input SectionParams {
   posts: Posts_Input
   authors: Authors_Input
-  marketingPages: MarketingPages_Input
+  cover: Cover_Input
 }
 
 type Mutation {
@@ -59,7 +59,7 @@ type Mutation {
   updateDocument(relativePath: String, params: SectionParams): SectionDocumentUnion
   updatePostsDocument(relativePath: String, params: Posts_Input): Posts_Document
   updateAuthorsDocument(relativePath: String, params: Authors_Input): Authors_Document
-  updateMarketingPagesDocument(relativePath: String, params: MarketingPages_Input): MarketingPages_Document
+  updateCoverDocument(relativePath: String, params: Cover_Input): Cover_Document
 }
 
 type Query {
@@ -71,8 +71,8 @@ type Query {
   getPostsList: [Posts_Document]
   getAuthorsDocument(relativePath: String): Authors_Document
   getAuthorsList: [Authors_Document]
-  getMarketingPagesDocument(relativePath: String): MarketingPages_Document
-  getMarketingPagesList: [MarketingPages_Document]
+  getCoverDocument(relativePath: String): Cover_Document
+  getCoverList: [Cover_Document]
 }
 
 union Posts_Data = Article_Doc_Data
@@ -184,22 +184,22 @@ input Author_Doc_Input {
   _body: String
 }
 
-union MarketingPages_Data = LandingPage_Doc_Data
+union Cover_Data = CoverPage_Doc_Data
 
-input MarketingPages_Input {
-  landingPage: LandingPage_Doc_Input
+input Cover_Input {
+  coverPage: CoverPage_Doc_Input
 }
 
-union MarketingPages_Values = LandingPage_Doc_Values
+union Cover_Values = CoverPage_Doc_Values
 
-union MarketingPages_Form = LandingPage_Doc_Form
+union Cover_Form = CoverPage_Doc_Form
 
-type MarketingPages_Document implements Node & Document {
+type Cover_Document implements Node & Document {
   id: ID!
   sys: SystemInfo
-  data: MarketingPages_Data
-  values: MarketingPages_Values
-  form: MarketingPages_Form
+  data: Cover_Data
+  values: Cover_Values
+  form: Cover_Form
 }
 
 type Message_Data {
@@ -213,10 +213,10 @@ type Image_Data {
   src: String
 }
 
-union LandingPage_Blocks_Data = Message_Data | Image_Data
+union CoverPage_Blocks_Data = Message_Data | Image_Data
 
-type LandingPage_Doc_Data {
-  blocks: [LandingPage_Blocks_Data]
+type CoverPage_Doc_Data {
+  blocks: [CoverPage_Blocks_Data]
   _body: String
 }
 
@@ -233,10 +233,10 @@ type Image_Values {
   _template: String
 }
 
-union LandingPage_Blocks_Values = Message_Values | Image_Values
+union CoverPage_Blocks_Values = Message_Values | Image_Values
 
-type LandingPage_Doc_Values {
-  blocks: [LandingPage_Blocks_Values]
+type CoverPage_Doc_Values {
+  blocks: [CoverPage_Blocks_Values]
   _body: String
   _template: String
 }
@@ -257,24 +257,24 @@ type Image_Form {
   fields: [Image_FormFieldsUnion]
 }
 
-type LandingPage_Blocks_BlocksFieldTemplates {
+type CoverPage_Blocks_BlocksFieldTemplates {
   message: Message_Form
   image: Image_Form
 }
 
-type LandingPage_Blocks_BlocksField implements FormField {
+type CoverPage_Blocks_BlocksField implements FormField {
   name: String
   label: String
   component: String
-  templates: LandingPage_Blocks_BlocksFieldTemplates
+  templates: CoverPage_Blocks_BlocksFieldTemplates
 }
 
-union LandingPage_Doc_FormFieldsUnion = LandingPage_Blocks_BlocksField | TextareaField
+union CoverPage_Doc_FormFieldsUnion = CoverPage_Blocks_BlocksField | TextareaField
 
-type LandingPage_Doc_Form {
+type CoverPage_Doc_Form {
   label: String
   name: String
-  fields: [LandingPage_Doc_FormFieldsUnion]
+  fields: [CoverPage_Doc_FormFieldsUnion]
 }
 
 input Message_Input {
@@ -293,7 +293,7 @@ input Blocks_Input {
   image: Image_Input
 }
 
-input LandingPage_Doc_Input {
+input CoverPage_Doc_Input {
   blocks: [Blocks_Input]
   _body: String
 }
