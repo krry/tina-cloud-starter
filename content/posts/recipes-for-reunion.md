@@ -1,6 +1,6 @@
 ---
-title: Vote For Pedro
-author: content/authors/napolean.md
+title: Recipes for Reunion
+author: content/authors/kerrbear.md
 _template: article
 ---
 

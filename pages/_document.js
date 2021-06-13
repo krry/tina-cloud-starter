@@ -37,8 +37,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta charSet="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="description" content={description} />
-          <meta property="og:title" content="Tina Cloud" />
+          <meta property="og:title" content="Teem Quest" />
           <meta property="og:description" content={description} />
           <meta
             property="og:image"

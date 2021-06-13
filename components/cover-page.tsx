@@ -12,14 +12,14 @@ export const CoverPage = (props: CoverPage_Doc_Data) => {
               case "Message_Data":
                 return (
                   <React.Fragment key={`block-${block.messageHeader}`}>
-                    <h3>{block.messageHeader}</h3>
+                    <h1>{block.messageHeader}</h1>
                     <Markdown>{block.messageBody}</Markdown>
                   </React.Fragment>
                 );
               case "Image_Data":
                 return (
                   <React.Fragment key={`diagram-${i}`}>
-                    <h3>{block.heading}</h3>
+                    <h1>{block.heading}</h1>
                     <Markdown>{block.imgDescription}</Markdown>
                     <Image
                       loading="lazy"

@@ -11,9 +11,29 @@ export const Wrapper = (props: { children: React.ReactNode; data: object }) => {
   return (
     <>
       <Head>
-        <title>Tina</title>
+        <title>Teem</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://pagecdn.io/lib/normalize/8.0.1/normalize.min.css"
+          rel="stylesheet"
+          crossOrigin="anonymous"
+        />
       </Head>
+      <style global jsx>
+        {GlobalStyles}
+      </style>
+      {props.children}
+    </>
+  );
+};
+
+export const Page = (props: { children: React.ReactNode; data: object }) => {
+  return (
+    <>
       <div className="header">
         <div className="container">
           <Nav />
@@ -25,9 +45,6 @@ export const Wrapper = (props: { children: React.ReactNode; data: object }) => {
           <RawRenderer data={props.data} />
         </div>
       </div>
-      <style global jsx>
-        {GlobalStyles}
-      </style>
       <style jsx>{PageStyles}</style>
     </>
   );
@@ -35,6 +52,16 @@ export const Wrapper = (props: { children: React.ReactNode; data: object }) => {
 
 export const GlobalStyles = css.global`
   :root {
+    --font: "Recursive", system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+      Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+
+    --font-weight: 400;
+    --font-slant: -4;
+    --font-casual: 1;
+    --font-mono: 0;
+    --font-cursive: 1;
+
     --white: #fff;
     --gray: #f9f9fb;
 
@@ -46,23 +73,50 @@ export const GlobalStyles = css.global`
 
     --orange: #ec4815;
     --orange-light: #eb6337;
+
+    --flair: hsl(324, 96%, 48%);
+    --text: hsl(212, 44%, 92%);
+    --bg: hsl(242, 100%, 7%);
+    --shade: hsla(242, 10%, 7%, 0.7);
+    --shadow: hsla(242, 10%, 7%, 0.2);
+    --tint: hsla(212, 44%, 96%, 0.2);
+    --accent: hsl(184, 96%, 48%);
+    --bold: hsl(224, 96%, 48%);
+    --smoke: hsl(212, 27%, 86%);
+    --ash: hsl(212, 27%, 66%);
+    --jaunt: cubic-bezier(0.618, 0.0618, 0.309, 0.99);
+    --breath: 7s;
+    --beat: 618ms;
+    --beats: 2618ms;
   }
 
   html {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
     box-sizing: border-box;
-    font-size: 100%;
-  }
-
-  * {
-    box-sizing: inherit;
-    font-family: inherit;
+    transition: 404ms var(--jaunt);
   }
 
   body {
-    margin: 0;
-    background: var(--mint-light);
+    font-size: clamp(12px, 1.618vw + 1.618vh, 96px);
+    background: var(--bg);
+    background-size: cover;
+    background-image: url("https://images.unsplash.com/photo-1475372674317-8003c861cb6a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2767&q=80");
+  }
+
+  * {
+    font-variation-settings: "wght" var(--font-weight), "slnt" var(--font-slant),
+      "CASL" var(--font-casual), "MONO" var(--font-mono),
+      "CRSV" var(--font-cursive);
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+    font-family: inherit;
+    transition: inherit;
   }
 `;
 
@@ -173,7 +227,7 @@ const Nav = () => {
     <div className="nav">
       <h4>
         <Link href="/" passHref>
-          <a>Tina Cloud Starter</a>
+          <a>Teem</a>
         </Link>
       </h4>
       <ul className="menu">
@@ -183,8 +237,8 @@ const Nav = () => {
           </Link>
         </li>
         <li>
-          <Link href={`${prefix}/posts/voteForPedro`} passHref>
-            <a className="summary">Vote for Pedro</a>
+          <Link href={`${prefix}/flow`} passHref>
+            <a className="summary">Flow</a>
           </Link>
         </li>
       </ul>

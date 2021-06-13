@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
-import { Wrapper } from "../components/helper-components";
+import { Wrapper, Page } from "../components/helper-components";
 import { useEditState } from "../utils/editState";
 
 const GoToEditPage: React.FC = () => {
@@ -13,7 +13,9 @@ const GoToEditPage: React.FC = () => {
   }, []);
   return (
     <Wrapper data={{}}>
-      <div>Going into edit mode...</div>
+      <Page data={{}}>
+        <div>Going into edit mode...</div>
+      </Page>
     </Wrapper>
   );
 };
